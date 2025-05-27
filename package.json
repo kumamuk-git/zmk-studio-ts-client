@@ -2,14 +2,18 @@
   "name": "@zmkfirmware/zmk-studio-ts-client",
   "version": "0.0.18",
   "description": "RPC client library for interacting with ZMK Studio enabled keyboards",
-  "type": "module",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "type": "commonjs",
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
+      "require": "./lib/index.js",
       "import": "./lib/index.js"
     },
     "./*": {
       "types": "./lib/*.d.ts",
+      "require": "./lib/*.js",
       "import": "./lib/*.js"
     }
   },
