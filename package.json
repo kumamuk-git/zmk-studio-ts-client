@@ -18,13 +18,17 @@
     }
   },
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "src/**/*",
+    "zmk-studio-messages/**/*",
+    "tsconfig.json",
+    "tsconfig.build.json"
   ],
   "scripts": {
     "generate": "run-script-os",
     "generate:windows": "protoc --plugin=protoc-gen-ts_proto=.\\node_modules\\.bin\\protoc-gen-ts_proto.cmd --ts_proto_out=./src/ --ts_proto_opt=env=browser --proto_path=./zmk-studio-messages/proto/zmk/ ./zmk-studio-messages/proto/zmk/*.proto",
     "generate:default": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./src/ --ts_proto_opt=env=browser --proto_path=./zmk-studio-messages/proto/zmk/ ./zmk-studio-messages/proto/zmk/*.proto",
-    "postinstall": "echo 'Skipping postinstall for npm compatibility'",
+    "postinstall": "npm run generate && npm run build",
     "build": "tsc --project tsconfig.build.json",
     "clean": "rm -rf ./lib/",
     "cm": "cz",
